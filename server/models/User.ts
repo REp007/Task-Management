@@ -1,6 +1,5 @@
-import { password } from 'bun';
 import { model, Schema} from 'mongoose';
-
+import type { User as UserType} from '@/types/User';
 const userSchema = new Schema({
     name: String,
     email: String,
@@ -8,6 +7,6 @@ const userSchema = new Schema({
 });
 
 
-const User = model('User', userSchema);
+const User = model<UserType>('User', userSchema);
 
 export default User;

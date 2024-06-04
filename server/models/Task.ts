@@ -1,5 +1,5 @@
 import { model, Schema} from 'mongoose';
-
+import type { Task as TaskType } from '@/types/Task';
 
 const taskSchema = new Schema({
     title: String,
@@ -8,6 +8,6 @@ const taskSchema = new Schema({
     is_resolved: Boolean
 });
 
-const Task = model('Task', taskSchema);
+const Task = model<TaskType>('Task', taskSchema);
 
 export default Task;
