@@ -10,10 +10,15 @@ const router = createBrowserRouter([
         path: '/',
         element: <Layout />,
         children: [
-                {index: true, element: <Home/>},
+            { index: true, element: <Home /> },
+            { path: 'login', element: <h1>Login</h1> },
+            { path: 'register', element: <h1>Register</h1> },
+            { path: 'tasks', element: <h1>TaskList</h1> },
+            // { path: 'tasks/create', element: <h1>TaskCreate</h1> },
+            // { path: 'tasks/:taskId', element: <h1>TaskDetail</h1> },
+            // { path: 'tasks/:taskId/edit', element: <h1>TaskEdit</h1> },
         ],
-        errorElement: <NotFoundComp/>
-
+        errorElement: <NotFoundComp />
     },
 ]);
 
