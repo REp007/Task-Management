@@ -3,7 +3,7 @@ import type { Task as TaskType } from '@/types/Task';
 
 const taskSchema = new Schema({
     title: String,
-    user_id: Schema.Types.ObjectId,
+    user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
     description: String,
     is_resolved: Boolean
 });
