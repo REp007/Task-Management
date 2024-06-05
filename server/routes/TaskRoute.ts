@@ -13,7 +13,7 @@ const router = Router();
 router.use(authenticate);
 
 router.get('/', getTaks);
-router.post('/add', createTask);
+router.post('/', createTask);
 router.put('/:id', updateTask);
 router.delete('/:id', deleteTask);
 
