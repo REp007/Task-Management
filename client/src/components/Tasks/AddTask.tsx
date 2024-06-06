@@ -16,7 +16,7 @@ import {
 import type { Task } from "@/types/type";
 
 const AddTask = () => {
-    const state = useContext<InitState>(ContextApp);
+    const { user, setTasks } = useContext<InitState>(ContextApp);
     const [task, setTask] = useState<Task>({
         userId: '',
         title: '',
@@ -33,7 +33,7 @@ const AddTask = () => {
         e.preventDefault();
 
         const token = localStorage.getItem('token');
-        if (token) {
+        if (user) {
             try {
                 
                 if (!token) {
@@ -73,7 +73,7 @@ const AddTask = () => {
 
                 if (updatedTasksResponse.ok) {
                     const updatedTasksData = await updatedTasksResponse.json();
-                    state.setTasks(updatedTasksData);
+                    setTasks(updatedTasksData);
                 }
 
             } catch (error) {

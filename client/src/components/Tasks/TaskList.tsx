@@ -14,11 +14,39 @@ import {
 import { Input } from "../ui/input";
 // import { Button } from "../ui/button";
 import ActionButton from '@/components/Tasks/ActionButton';
+import { AlertCircle } from "lucide-react"
+import { Link } from 'react-router-dom';
 
+import {
+    Alert,
+    AlertDescription,
+    AlertTitle,
+} from "@/components/ui/alert"
 
 const TaskList = () => {
-    const state = useContext<InitState>(ContextApp);
-    console.log(state);
+    const { tasks, user } = useContext<InitState>(ContextApp);
+    // console.log(state);
+
+    if (!user) {
+        return (
+            <Alert variant="destructive">
+                <AlertCircle className="h-4 w-4" />
+                <AlertTitle>Login</AlertTitle>
+                <AlertDescription>
+                    You should login to manage your tasks.
+                    <p>
+                        <Link to={`/login`}
+                            className="text-blue-900"
+                        >login now!</Link>
+                    </p>
+                    <p>
+                        if you dont have account!&nbsp;&nbsp;&nbsp;
+                        <Link to={`/register`} className="text-blue-900" >Register!</Link>
+                    </p>
+                </AlertDescription>
+            </Alert>
+        )
+    }
 
     return (
         <Table>
@@ -31,13 +59,13 @@ const TaskList = () => {
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {state.tasks.map(task => (
+                {tasks.map(task => (
                     <TableRow key={task.id}>
                         <TableCell>
                             <Input
                                 className="w-4"
                                 type="checkbox"
-                                
+
                                 checked={task.is_resolved}
                             />
                         </TableCell>
@@ -45,7 +73,7 @@ const TaskList = () => {
                             {`${task.title.split('')[0].toUpperCase()}${task.title.split('').slice(1).join('').toLocaleLowerCase()}`}
                         </TableCell>
                         <TableCell className="text-right">
-                            <ActionButton task_id={task.id}/>
+                            <ActionButton task_id={task.id} />
                         </TableCell>
                     </TableRow>
                 ))}

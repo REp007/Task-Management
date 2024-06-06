@@ -6,6 +6,7 @@ export interface InitState {
     tasks: Task[];
     setUser?: (user: User | null) => void;
     setTasks?: (tasks: Task[]) => void;
+    logout?: () => void;
 }
 
 const defaultState: InitState = {
@@ -25,6 +26,12 @@ const ContextComp = ({ children }: { children: React.ReactNode }) => {
 
     const setTasksState = (newTasks: Task[]) => {
         setTasks(newTasks);
+    };
+
+    const logout = () => {
+        localStorage.removeItem('token');
+        setUser(null);
+        setTasks([]);
     };
 
     useEffect(() => {
@@ -47,18 +54,19 @@ const ContextComp = ({ children }: { children: React.ReactNode }) => {
                 }
 
                 const data = await response.json();
-                setTasks(data);
                 
+                setTasks(data);
+
             } catch (error) {
                 console.error('There was an error fetching tasks:', error);
             }
         };
 
         fetchData();
-    }, []);
+    }, [user]);
 
     return (
-        <ContextApp.Provider value={{ user, tasks, setUser: setUserState, setTasks: setTasksState }}>
+        <ContextApp.Provider value={{ user, tasks, setUser: setUserState, setTasks: setTasksState, logout }}>
             {children}
         </ContextApp.Provider>
     );
