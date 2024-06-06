@@ -50,7 +50,7 @@ const NavBar = () => {
                     </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                    <Link to={"tasks"} legacyBehavior passHref>
+                    <Link to={"tasks"}>
                         <NavigationMenuLink>
                             Tasks
                         </NavigationMenuLink>
