@@ -1,6 +1,5 @@
 import img404 from '@/assets/ResponseCode/404 NotFound.png';
 import { Link } from 'react-router-dom';
-import NavBar from '../NavBar';
 
 const NotFoundComp = () => {
     return (
