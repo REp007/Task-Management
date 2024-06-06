@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import type { User } from "@/types/type"
 import { useNavigate } from "react-router-dom"
+import { ContextApp } from '@/context/ContextComp';
+import type { InitState } from '@/context/ContextComp';
 
 const Login = () => {
     const [user, setUser] = useState<User>({
@@ -10,7 +12,7 @@ const Login = () => {
         password: ''
     });
     const navigate = useNavigate();
-
+    const state = useContext<InitState>(ContextApp);
     const [error, setError] = useState<string | null>(null);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,6 +38,7 @@ const Login = () => {
 
             const data = await response.json();
             localStorage.setItem('token', data.token);
+            state.setUser(data.user);
             navigate('/tasks')
         } catch (error) {
             setError(error.message);

@@ -12,12 +12,13 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import { Input } from "../ui/input";
-import { Button } from "../ui/button";
-import { join } from "path";
+// import { Button } from "../ui/button";
+import ActionButton from '@/components/Tasks/ActionButton';
+
 
 const TaskList = () => {
-    const Tasks = useContext<InitState>(ContextApp);
-    console.log(Tasks);
+    const state = useContext<InitState>(ContextApp);
+    console.log(state);
 
     return (
         <Table>
@@ -26,11 +27,11 @@ const TaskList = () => {
                 <TableRow>
                     <TableHead className="scroll-m-20 text-2xl font-semibold tracking-tight">Status</TableHead>
                     <TableHead className="scroll-m-20 text-2xl font-semibold tracking-tight">Title</TableHead>
-                    <TableHead className="scroll-m-20 text-2xl font-semibold tracking-tight text-right">Accent</TableHead>
+                    <TableHead className="scroll-m-20 text-2xl font-semibold tracking-tight text-right">Action</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {Tasks.tasks.map(task => (
+                {state.tasks.map(task => (
                     <TableRow key={task.id}>
                         <TableCell>
                             <Input
@@ -44,9 +45,7 @@ const TaskList = () => {
                             {`${task.title.split('')[0].toUpperCase()}${task.title.split('').slice(1).join('').toLocaleLowerCase()}`}
                         </TableCell>
                         <TableCell className="text-right">
-                            <Button>
-                                Acions
-                            </Button>
+                            <ActionButton task_id={task.id}/>
                         </TableCell>
                     </TableRow>
                 ))}
