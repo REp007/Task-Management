@@ -16,6 +16,12 @@ const defaultState: InitState = {
         title: 'title',
         description: 'bla bla',
         is_resolved: false
+    },{
+        id: 'zxcdsds0ff',
+        userId: '1',
+        title: 'Remove trash',
+        description: 'bla bla',
+        is_resolved: true
     }],
 };
 
