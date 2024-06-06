@@ -2,12 +2,15 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import React, { useState } from "react"
 import type { User } from "@/types/type"
+import { useNavigate } from "react-router-dom"
 
 const Login = () => {
     const [user, setUser] = useState<User>({
         email: '',
         password: ''
     });
+    const navigate = useNavigate();
+
     const [error, setError] = useState<string | null>(null);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,8 +35,8 @@ const Login = () => {
             }
 
             const data = await response.json();
-            console.log(data);
             localStorage.setItem('token', data.token);
+            navigate('/tasks')
         } catch (error) {
             setError(error.message);
             console.error('There was an error!', error);
