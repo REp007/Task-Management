@@ -18,7 +18,7 @@ const router = createBrowserRouter([
             { path: 'register', element: <Register/> },
             { path: 'tasks', element: <TaskComp/> },
             // { path: 'tasks/create', element: <h1>TaskCreate</h1> },
-            // { path: 'tasks/:taskId', element: <h1>TaskDetail</h1> },
+            { path: 'tasks/:taskId', element: <h1>TaskDetail</h1> },
             // { path: 'tasks/:taskId/edit', element: <h1>TaskEdit</h1> },
         ],
         errorElement: <NotFoundComp />

@@ -1,5 +1,4 @@
 import { useContext } from "react";
-
 import { ContextApp } from "@/context/ContextComp";
 import type { InitState } from "@/context/ContextComp";
 import {
@@ -12,41 +11,37 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import { Input } from "../ui/input";
-// import { Button } from "../ui/button";
-import ActionButton from '@/components/Tasks/ActionButton';
-import { AlertCircle } from "lucide-react"
-import { Link } from 'react-router-dom';
-
-import {
-    Alert,
-    AlertDescription,
-    AlertTitle,
-} from "@/components/ui/alert"
+// import ActionButton from '@/components/Tasks/ActionButton';
+import TaskEdit from '@/components/Tasks/TaskEdit';
+import { Button } from "@/components/ui/button";
 
 const TaskList = () => {
-    const { tasks, user } = useContext<InitState>(ContextApp);
-    // console.log(state);
+    const { tasks, setTasks } = useContext<InitState>(ContextApp);
 
-    if (!user) {
-        return (
-            <Alert variant="destructive">
-                <AlertCircle className="h-4 w-4" />
-                <AlertTitle>Login</AlertTitle>
-                <AlertDescription>
-                    You should login to manage your tasks.
-                    <p>
-                        <Link to={`/login`}
-                            className="text-blue-900"
-                        >login now!</Link>
-                    </p>
-                    <p>
-                        if you dont have account!&nbsp;&nbsp;&nbsp;
-                        <Link to={`/register`} className="text-blue-900" >Register!</Link>
-                    </p>
-                </AlertDescription>
-            </Alert>
-        )
-    }
+    const handleDelete = async (id: string) => {
+        const token = localStorage.getItem('token');
+        if (!token) return;
+
+        try {
+            const response = await fetch(`http://localhost:3000/api/tasks/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+            });
+
+            if (response) {
+                console.log(response);
+                const updatedTasks = tasks.filter(task => task._id !== id);
+                setTasks(updatedTasks);
+            } else {
+                console.error('Failed to delete task');
+            }
+        } catch (error) {
+            console.error('Error deleting task:', error);
+        }
+    };
 
     return (
         <Table>
@@ -55,32 +50,38 @@ const TaskList = () => {
                 <TableRow>
                     <TableHead className="scroll-m-20 text-2xl font-semibold tracking-tight">Status</TableHead>
                     <TableHead className="scroll-m-20 text-2xl font-semibold tracking-tight">Title</TableHead>
-                    <TableHead className="scroll-m-20 text-2xl font-semibold tracking-tight text-right">Action</TableHead>
+                    <TableHead className="scroll-m-20 text-2xl font-semibold tracking-tight hidden xl:table-cell">Description</TableHead>
+                    <TableHead className="scroll-m-20 text-2xl font-semibold tracking-tight text-right">Edit</TableHead>
+                    <TableHead className="scroll-m-20 text-2xl font-semibold tracking-tight text-right">Delete</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
                 {tasks.map(task => (
-                    <TableRow key={task.id}>
+                    <TableRow key={task._id}>
                         <TableCell>
                             <Input
                                 className="w-4"
                                 type="checkbox"
-
                                 checked={task.is_resolved}
                             />
                         </TableCell>
                         <TableCell className="scroll-m-20 text-xl font-semibold tracking-tight">
-                            {`${task.title.split('')[0].toUpperCase()}${task.title.split('').slice(1).join('').toLocaleLowerCase()}`}
+                            {`${task.title.charAt(0).toUpperCase()}${task.title.slice(1).toLowerCase()}`}
+                        </TableCell>
+                        <TableCell className="scroll-m-20 text-xl font-semibold tracking-tight overflow-hidden text-ellipsis max-w-xs whitespace-nowrap hidden xl:table-cell">
+                            {task.description.length > 10 ? `${task.description.slice(0, 10)}...` : task.description}
                         </TableCell>
                         <TableCell className="text-right">
-                            <ActionButton task_id={task.id} />
+                            <TaskEdit task={task} setTasks={setTasks} />
+                        </TableCell>
+                        <TableCell className="text-right">
+                            <Button variant="destructive" onClick={() => handleDelete(task._id)}>Delete</Button>
                         </TableCell>
                     </TableRow>
                 ))}
             </TableBody>
         </Table>
-
     )
 }
 
-export default TaskList
+export default TaskList;

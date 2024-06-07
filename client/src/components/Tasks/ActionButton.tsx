@@ -8,12 +8,13 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 import { Button } from "../ui/button";
-
+import TaskEdit from './TaskEdit';
+import { Task } from "@/types/type";
 interface PropsState {
-    task_id: string | undefined;
+    task_id: Task;
 }
 
-const ActionButton = ({ task_id }: PropsState) => {
+const ActionButton = ({ task }: PropsState) => {
     return (
         <>
             <DropdownMenu>
@@ -23,11 +24,11 @@ const ActionButton = ({ task_id }: PropsState) => {
                     </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
-                    <DropdownMenuLabel>Description</DropdownMenuLabel>
-                    <DropdownMenuSeparator />
                     <DropdownMenuLabel>Resolve</DropdownMenuLabel>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem>Edit</DropdownMenuItem>
+                    <DropdownMenuItem>
+                        {/* <TaskEdit task={task} /> */}
+                    </DropdownMenuItem>
                     <DropdownMenuItem>Delete</DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
