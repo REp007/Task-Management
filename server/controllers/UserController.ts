@@ -3,6 +3,7 @@ import User from '@/models/User';
 import type { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import type { User as UserType } from '@/types/User';
 
 
 
@@ -38,7 +39,7 @@ const register = async (req: Request, res: Response) => {
 const login = async (req: Request, res: Response) => {
     const { email, password } = req.body;
     try {
-        const user = await User.findOne({ email });
+        const user: UserType = await User.findOne({ email });
 
         if (!user) {
             return res.status(404).json({
@@ -57,7 +58,10 @@ const login = async (req: Request, res: Response) => {
         const token = jwt.sign({ _id: user._id, name: user.name, email: user.email }, process.env.ACCESS_TOKEN_SECRET!);
 
         res.status(200).json({
-            token
+            token, user: {
+                name: user.name,
+                email: user.email
+            }
         });
     }
     catch (error) {

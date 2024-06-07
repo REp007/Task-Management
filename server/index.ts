@@ -9,7 +9,13 @@ import SwaggerUi from "swagger-ui-express";
 const app = express();
 connectDB();
 app.use(express.json());
-app.use(cors());
+const corsOptions = {
+    origin: ['http://localhost:5173'],
+    optionsSuccessStatus: 200
+};
+
+
+app.use(cors(corsOptions));
 
 const swaggerDocument = YAML.load('./swagger.yml');
 
