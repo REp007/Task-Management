@@ -23,7 +23,7 @@ const TaskList = () => {
         if (!token) return;
 
         try {
-            const response = await fetch(`http://localhost:3000/api/tasks/${id}`, {
+            const response = await fetch(`https://task-app-047s.onrender.com/api/tasks/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -51,7 +51,7 @@ const TaskList = () => {
         if (!token) return;
 
         try {
-            const response = await fetch(`http://localhost:3000/api/tasks/${id}`, {
+            const response = await fetch(`https://task-app-047s.onrender.com/api/tasks/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`,

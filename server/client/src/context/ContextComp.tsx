@@ -42,7 +42,7 @@ const ContextComp = ({ children }: { children: React.ReactNode }) => {
                     throw new Error('No token found');
                 }
 
-                const response = await fetch('http://localhost:3000/api/tasks', {
+                const response = await fetch('https://task-app-047s.onrender.com/api/tasks', {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'

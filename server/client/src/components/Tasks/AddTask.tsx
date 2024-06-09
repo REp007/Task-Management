@@ -40,7 +40,7 @@ const AddTask = () => {
                     throw new Error('No token found');
                 }
 
-                const response = await fetch('http://localhost:3000/api/tasks', {
+                const response = await fetch('https://task-app-047s.onrender.com/api/tasks', {
                     method: 'POST',
                     headers: {
                         'Authorization': `Bearer ${token}`,
@@ -64,7 +64,7 @@ const AddTask = () => {
                     is_resolved: false
                 });
 
-                const updatedTasksResponse = await fetch('http://localhost:3000/api/tasks', {
+                const updatedTasksResponse = await fetch('https://task-app-047s.onrender.com/api/tasks', {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'

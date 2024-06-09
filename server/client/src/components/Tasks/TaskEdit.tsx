@@ -37,7 +37,7 @@ const TaskEdit: React.FC<TaskEditProps> = ({ task: initialTask }) => {
                 throw new Error('No token found');
             }
 
-            const response = await fetch(`http://localhost:3000/api/tasks/${task._id}`, {
+            const response = await fetch(`https://task-app-047s.onrender.com/api/tasks/${task._id}`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -56,7 +56,7 @@ const TaskEdit: React.FC<TaskEditProps> = ({ task: initialTask }) => {
 
             setSuccessMessage('Task updated successfully');
 
-            const updatedTasksResponse = await fetch('http://localhost:3000/api/tasks', {
+            const updatedTasksResponse = await fetch('https://task-app-047s.onrender.com/api/tasks', {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
