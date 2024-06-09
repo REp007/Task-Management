@@ -1,6 +1,4 @@
-# MERN Application
-
-This project is a full-stack MERN (MongoDB, Express, React, Node.js) application. The server side is a RESTful API that serves the client side of the project.
+# Task Managment App
 
 ## Table of Contents
 
@@ -8,7 +6,6 @@ This project is a full-stack MERN (MongoDB, Express, React, Node.js) application
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
     - [install bun](#install-bun)
-      - [I prefer to use `bun` to manage my project.](#i-prefer-to-use-bun-to-manage-my-project)
     - [Server Setup](#server-setup)
     - [Client Setup](#client-setup)
   - [Environment Variables](#environment-variables)
