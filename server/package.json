@@ -3,8 +3,8 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "dev": "bun --watch index.ts",
-    "build": "bun install --prefix ./client && bun run build --prefix ./client && bun install"
+    "dev": "node index.js",
+    "build": "npm install --prefix ./client && npm run build --prefix ./client && npm install"
   },
   "devDependencies": {
     "@types/bun": "latest"
@@ -24,6 +24,7 @@
     "@types/yamljs": "^0.2.34",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.4.1",

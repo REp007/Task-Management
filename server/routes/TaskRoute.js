@@ -1,0 +1,10 @@
+import { getTaks, createTask, updateTask, deleteTask } from '../controllers/TaskController.js';
+import authenticate from '../middleware/authenticate.js';
+import { Router } from 'express';
+const router = Router();
+router.use(authenticate);
+router.get('/', getTaks);
+router.post('/', createTask);
+router.put('/:id', updateTask);
+router.delete('/:id', deleteTask);
+export default router;
