@@ -1,124 +1,94 @@
 import {
     NavigationMenu,
-    NavigationMenuContent,
-    // NavigationMenuIndicator,
     NavigationMenuItem,
     NavigationMenuLink,
     NavigationMenuList,
     NavigationMenuTrigger,
-    // NavigationMenuViewport,
-    // navigationMenuTriggerStyle
-} from "@/components/ui/navigation-menu"
-
+} from "@/components/ui/navigation-menu";
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Link } from "react-router-dom";
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 import { ContextApp } from '@/context/ContextComp';
 import type { InitState } from '@/context/ContextComp';
 import { useContext } from "react";
+
 const NavBar = () => {
     const { user, logout } = useContext<InitState>(ContextApp);
 
     return (
-        <NavigationMenu>
-            <NavigationMenuList>
+        <NavigationMenu className="w-full">
+            <NavigationMenuList className="flex flex-col md:flex-row md:items-center">
                 <NavigationMenuItem>
-                    <NavigationMenuTrigger>Pages</NavigationMenuTrigger>
-                    <NavigationMenuContent className="absolute mt-2 bg-white rounded-md shadow-lg">
-                        <ul className="flex flex-col w-full gap-3 p-4 md:w-[400px] lg:w-[400px]">
-                            <li>
-                                <NavigationMenuLink asChild>
-                                    <Link to={'/'}
-                                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-100 focus:bg-gray-100"
-                                    >
-                                        <div className="text-sm font-medium leading-none">{'Home'}</div>
-                                        <p className="text-sm leading-snug text-gray-600">
-                                            {'Home page with all info about this app'}
-                                        </p>
-                                    </Link>
-                                </NavigationMenuLink>
-                            </li>
-                            <li>
-                                <NavigationMenuLink asChild>
-                                    <Link to={'/about'}
-                                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-100 focus:bg-gray-100"
-                                    >
-                                        <div className="text-sm font-medium leading-none">{'About'}</div>
-                                        <p className="text-sm leading-snug text-gray-600">
-                                            {'About page with all info about this app'}
-                                        </p>
-                                    </Link>
-                                </NavigationMenuLink>
-                            </li>
-                        </ul>
-                    </NavigationMenuContent>
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <NavigationMenuTrigger>Pages</NavigationMenuTrigger>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent className="mt-2 bg-white rounded-md shadow-lg w-full md:w-auto">
+                            <DropdownMenuItem>
+                                <Link to={'/'} className="block w-full select-none p-3 leading-none no-underline transition-colors hover:bg-gray-100 focus:bg-gray-100">
+                                    <div className="text-sm font-medium">{'Home'}</div>
+                                    <p className="text-sm text-gray-600">{'Home page with all info about this app'}</p>
+                                </Link>
+                            </DropdownMenuItem>
+                            <DropdownMenuItem>
+                                <Link to={'/about'} className="block w-full select-none p-3 leading-none no-underline transition-colors hover:bg-gray-100 focus:bg-gray-100">
+                                    <div className="text-sm font-medium">{'About'}</div>
+                                    <p className="text-sm text-gray-600">{'About page with all info about this app'}</p>
+                                </Link>
+                            </DropdownMenuItem>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                     <Link to={"tasks"}>
-                        <NavigationMenuLink>
-                            Tasks
-                        </NavigationMenuLink>
+                        <NavigationMenuLink>Tasks</NavigationMenuLink>
                     </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                    <NavigationMenuTrigger>Connect</NavigationMenuTrigger>
-                    <NavigationMenuContent
-                        className="absolute mt-2 bg-white rounded-md shadow-lg">
-                        <ul className="flex flex-col w-full gap-3 p-4 md:w-[400px] lg:w-[400px]">
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <NavigationMenuTrigger>Connect</NavigationMenuTrigger>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent className="mt-2 bg-white rounded-md shadow-lg w-full md:w-auto">
                             {user ? (
-                                <li>
-                                    <NavigationMenuLink asChild>
-                                        <Link to={'/'}
-                                            onClick={() => logout()}
-                                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-100 focus:bg-gray-100"
-                                        >
-                                            <div className="text-sm font-medium leading-none">{'Logout'}</div>
-                                            <p className="text-sm leading-snug text-gray-600">
-                                                {'Click here to logout'}
-                                            </p>
-                                        </Link>
-                                    </NavigationMenuLink>
-                                </li>
+                                <DropdownMenuItem>
+                                    <Link to={'/'} onClick={() => logout()} className="block w-full select-none p-3 leading-none no-underline transition-colors hover:bg-gray-100 focus:bg-gray-100">
+                                        <div className="text-sm font-medium">{'Logout'}</div>
+                                        <p className="text-sm text-gray-600">{'Click here to logout'}</p>
+                                    </Link>
+                                </DropdownMenuItem>
                             ) : (
                                 <>
-                                    <li>
-                                        <NavigationMenuLink asChild>
-                                            <Link to={'/login'}
-                                                className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-100 focus:bg-gray-100"
-                                            >
-                                                <div className="text-sm font-medium leading-none">{'Login'}</div>
-                                                <p className="text-sm leading-snug text-gray-600">
-                                                    {'Login Page'}
-                                                </p>
-                                            </Link>
-                                        </NavigationMenuLink>
-                                    </li>
-                                    <li>
-                                        <NavigationMenuLink asChild>
-                                            <Link to={'/register'}
-                                                className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-100 focus:bg-gray-100"
-                                            >
-                                                <div className="text-sm font-medium leading-none">{'Register'}</div>
-                                                <p className="text-sm leading-snug text-gray-600">
-                                                    {'Register Page'}
-                                                </p>
-                                            </Link>
-                                        </NavigationMenuLink>
-                                    </li>
+                                    <DropdownMenuItem>
+                                        <Link to={'/login'} className="block w-full select-none p-3 leading-none no-underline transition-colors hover:bg-gray-100 focus:bg-gray-100">
+                                            <div className="text-sm font-medium">{'Login'}</div>
+                                            <p className="text-sm text-gray-600">{'Login Page'}</p>
+                                        </Link>
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem>
+                                        <Link to={'/register'} className="block w-full select-none p-3 leading-none no-underline transition-colors hover:bg-gray-100 focus:bg-gray-100">
+                                            <div className="text-sm font-medium">{'Register'}</div>
+                                            <p className="text-sm text-gray-600">{'Register Page'}</p>
+                                        </Link>
+                                    </DropdownMenuItem>
                                 </>
                             )}
-                        </ul>
-                    </NavigationMenuContent>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                    <a href={"https://github.com/REp007/Task-Management"} target="new">
-                        <NavigationMenuLink>
-                            Github
-                        </NavigationMenuLink>
+                    <a href={"https://github.com/REp007/Task-Management"} target="_blank" rel="noopener noreferrer">
+                        <NavigationMenuLink>Github</NavigationMenuLink>
                     </a>
                 </NavigationMenuItem>
             </NavigationMenuList>
         </NavigationMenu>
-    )
+    );
 }
 
 export default NavBar;
