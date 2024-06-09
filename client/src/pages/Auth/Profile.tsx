@@ -1,8 +1,7 @@
 import { useContext } from "react";
 import { ContextApp } from "@/context/ContextComp";
 import type { InitState } from "@/context/ContextComp";
-import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card"; // Assuming these are available in your Shadcn UI
-// import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card"; 
 
 const Profile = () => {
     const { user, 

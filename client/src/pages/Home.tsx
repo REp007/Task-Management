@@ -8,15 +8,8 @@ const Home = () => {
         readTask: true,
         updateTask: true,
         deleteTask: true,
-        markTask: false,
+        markTask: true,
     });
-
-    // const toggleFeature = (feature) => {
-    //     setCompletedFeatures({
-    //         ...completedFeatures,
-    //         [feature]: !completedFeatures[feature],
-    //     });
-    // };
 
     return (
         <div className="p-4 md:p-8 lg:p-16">
@@ -40,7 +33,6 @@ const Home = () => {
                         <Checkbox
                             className="form-checkbox h-5 w-5 text-gray-600"
                             checked={completedFeatures.auth}
-                            // onChange={() => toggleFeature("auth")}
                         />
                         <span className="ml-2 text-gray-700">Authentification Utilisateur</span>
                     </label>
@@ -50,7 +42,6 @@ const Home = () => {
                         <Checkbox
                             className="form-checkbox h-5 w-5 text-gray-600"
                             checked={completedFeatures.createTask}
-                        // onChange={() => toggleFeature("createTask")}
                         />
                         <span className="ml-2 text-gray-700">Création de tâches</span>
                     </label>
@@ -60,7 +51,6 @@ const Home = () => {
                         <Checkbox
                             className="form-checkbox h-5 w-5 text-gray-600"
                             checked={completedFeatures.readTask}
-                        // onChange={() => toggleFeature("readTask")}
                         />
                         <span className="ml-2 text-gray-700">Lecture des tâches</span>
                     </label>
@@ -70,7 +60,6 @@ const Home = () => {
                         <Checkbox
                             className="form-checkbox h-5 w-5 text-gray-600"
                             checked={completedFeatures.updateTask}
-                        // onChange={() => toggleFeature("updateTask")}
                         />
                         <span className="ml-2 text-gray-700">Mise à jour des tâches</span>
                     </label>
@@ -80,7 +69,6 @@ const Home = () => {
                         <Checkbox
                             className="form-checkbox h-5 w-5 text-gray-600"
                             checked={completedFeatures.deleteTask}
-                        // onChange={() => toggleFeature("deleteTask")}
                         />
                         <span className="ml-2 text-gray-700">Suppression des tâches</span>
                     </label>
@@ -90,7 +78,6 @@ const Home = () => {
                         <Checkbox
                             className="form-checkbox h-5 w-5 text-gray-600"
                             checked={completedFeatures.markTask}
-                        // onChange={() => toggleFeature("markTask")}
                         />
                         <span className="ml-2 text-gray-700">Marquage des tâches comme complètes ou incomplètes (optionnel)</span>
                     </label>
