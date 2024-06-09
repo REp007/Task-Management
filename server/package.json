@@ -3,7 +3,8 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "dev": "bun --watch index.ts"
+    "dev": "bun --watch index.ts",
+    "build": "bun install --prefix ./client && bun run build --prefix ./client && bun install"
   },
   "devDependencies": {
     "@types/bun": "latest"

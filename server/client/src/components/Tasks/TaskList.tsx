@@ -36,6 +36,7 @@ const TaskList = () => {
                 const updatedTasks = tasks.map(task =>
                     task._id === id ? { ...task, is_resolved: isResolved } : task
                 );
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                 setTasks(updatedTasks);
             } else {
                 console.error('Failed to update task');
@@ -60,6 +61,7 @@ const TaskList = () => {
 
             if (response.ok) {
                 const updatedTasks = tasks.filter(task => task._id !== id);
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                 setTasks(updatedTasks);
             } else {
                 console.error('Failed to delete task');

@@ -73,6 +73,7 @@ const AddTask = () => {
 
                 if (updatedTasksResponse.ok) {
                     const updatedTasksData = await updatedTasksResponse.json();
+                    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                     setTasks(updatedTasksData);
                 }
 

@@ -6,6 +6,15 @@ import connectDB from '@/config/db';
 import YAML from 'yamljs';
 import SwaggerUi from "swagger-ui-express";
 
+import path from 'path';
+import { fileURLToPath } from 'bun';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+
+
+
 const app = express();
 connectDB();
 app.use(express.json());
@@ -22,6 +31,9 @@ const swaggerDocument = YAML.load('./swagger.yml');
 app.use('/api-docs', SwaggerUi.serve, SwaggerUi.setup(swaggerDocument));
 app.use('/api/auth', userRouter);
 app.use('/api/tasks', TaskRouter);
+
+app.use(express.static(path.join(__dirname, '/client/dist/')));
+app.get('*', (req, res) => res.sendFile(path.join(__dirname, '/client/dist/index.html')));
 
 const port = process.env.PORT || 3000;
 

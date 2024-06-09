@@ -65,6 +65,7 @@ const TaskEdit: React.FC<TaskEditProps> = ({ task: initialTask }) => {
 
             if (updatedTasksResponse.ok) {
                 const updatedTasksData = await updatedTasksResponse.json();
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                 setTasks(updatedTasksData);
             }
 
