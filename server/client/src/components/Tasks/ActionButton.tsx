@@ -8,13 +8,13 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 import { Button } from "../ui/button";
-import TaskEdit from './TaskEdit';
+// import TaskEdit from './TaskEdit';
 import { Task } from "@/types/type";
 interface PropsState {
     task_id: Task;
 }
 
-const ActionButton = ({ task }: PropsState) => {
+const ActionButton = () => {
     return (
         <>
             <DropdownMenu>
