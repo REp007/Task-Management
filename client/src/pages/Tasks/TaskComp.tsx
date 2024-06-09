@@ -47,9 +47,9 @@ const TaskComp = () => {
                 <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
                     Tasks List
                 </h1>
-                <div className="flex flex-row p-[20px] mt-[10px] gap-20">
-                    <div className="p">
-                        <div className="text-lg font-semibold">You want to added an Task ?</div>
+                <div className="flex flex-row p-[20px] mt-[10px] gap-5">
+                    <div className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">
+                        Do you want to add a Task?
                     </div>
                     <AddTask />
                 </div>

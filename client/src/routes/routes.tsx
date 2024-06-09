@@ -7,13 +7,14 @@ import Login from "@/pages/Auth/Login";
 import Register from "@/pages/Auth/Register";
 
 import TaskComp from '@/pages/Tasks/TaskComp';
+import Profile from "@/pages/Auth/Profile";
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Layout />,
         children: [
             { index: true, element: <Home /> },
-            { path: 'about', element: <h1>About</h1>},
+            { path: 'profile', element: <Profile/>},
             { path: 'login', element: <Login/> },
             { path: 'register', element: <Register/> },
             { path: 'tasks', element: <TaskComp/> },

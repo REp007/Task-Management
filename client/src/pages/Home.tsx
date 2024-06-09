@@ -146,9 +146,9 @@ const Home = () => {
             </ul>
             <div className="by">
                 <blockquote className="mt-6 text-right text-blue-700 border-l-2 pl-6 italic">
-                    {/* <a href={'https://x.com/Amr4nii'} target="new">
+                    <a href={'https://x.com/Amr4nii'} target="new">
                         {'By @Amranii'}
-                    </a> */}
+                    </a>
                 </blockquote>
             </div>
         </div>
