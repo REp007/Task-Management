@@ -84,6 +84,6 @@ ACCESS_TOKEN_SECRET=your_secret_token
 ## API Endpoints
 
 > [!TIP]: 
-> For a full list of API endpoints and their documentation, visit: [API Docs](http://localhost:3000/api-docs/)
+> For a full list of API endpoints and their documentation, visit: [API Docs](https://task-app-047s.onrender.com/api-docs/)
 
 > **http://localhost:{yourPort}/api-docs/**

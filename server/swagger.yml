@@ -9,7 +9,7 @@ info:
     email: el_amranii@outlook.com
 
 servers:
-  - url: http://localhost:3000
+  - url: https://task-app-047s.onrender.com
     description: The local development server for Tasks
 
 tags:
