@@ -50,13 +50,13 @@ const updateTask = async (req: Request, res: Response) => {
                 message: 'Task not found'
             });
         }
-        if (title) {
+        if (title !== undefined) {
             findTask.title = title;
         }
-        if (description) {
+        if (description !== undefined) {
             findTask.description = description;
         }
-        if (is_resolved) {
+        if (is_resolved !== undefined) {
             findTask.is_resolved = is_resolved;
         }
         await findTask.save();

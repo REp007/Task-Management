@@ -1,25 +1,26 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Checkbox } from "@/components/ui/checkbox"
 const Home = () => {
     const [completedFeatures, setCompletedFeatures] = useState({
-        auth: false,
-        createTask: false,
-        readTask: false,
-        updateTask: false,
-        deleteTask: false,
+        auth: true,
+        createTask: true,
+        readTask: true,
+        updateTask: true,
+        deleteTask: true,
         markTask: false,
     });
 
-    const toggleFeature = (feature) => {
-        setCompletedFeatures({
-            ...completedFeatures,
-            [feature]: !completedFeatures[feature],
-        });
-    };
+    // const toggleFeature = (feature) => {
+    //     setCompletedFeatures({
+    //         ...completedFeatures,
+    //         [feature]: !completedFeatures[feature],
+    //     });
+    // };
 
     return (
         <div className="p-4 md:p-8 lg:p-16">
-            <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
+            <h1 className="text-center scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
                 Task Managment App
             </h1>
             <h2
@@ -36,66 +37,60 @@ const Home = () => {
             <ul className="my-6 ml-6 list-disc">
                 <li>
                     <label className="inline-flex items-center mt-3">
-                        <input
-                            type="checkbox"
+                        <Checkbox
                             className="form-checkbox h-5 w-5 text-gray-600"
                             checked={completedFeatures.auth}
-                            onChange={() => toggleFeature("auth")}
+                            // onChange={() => toggleFeature("auth")}
                         />
                         <span className="ml-2 text-gray-700">Authentification Utilisateur</span>
                     </label>
                 </li>
                 <li>
                     <label className="inline-flex items-center mt-3">
-                        <input
-                            type="checkbox"
+                        <Checkbox
                             className="form-checkbox h-5 w-5 text-gray-600"
                             checked={completedFeatures.createTask}
-                            onChange={() => toggleFeature("createTask")}
+                        // onChange={() => toggleFeature("createTask")}
                         />
                         <span className="ml-2 text-gray-700">Création de tâches</span>
                     </label>
                 </li>
                 <li>
                     <label className="inline-flex items-center mt-3">
-                        <input
-                            type="checkbox"
+                        <Checkbox
                             className="form-checkbox h-5 w-5 text-gray-600"
                             checked={completedFeatures.readTask}
-                            onChange={() => toggleFeature("readTask")}
+                        // onChange={() => toggleFeature("readTask")}
                         />
                         <span className="ml-2 text-gray-700">Lecture des tâches</span>
                     </label>
                 </li>
                 <li>
                     <label className="inline-flex items-center mt-3">
-                        <input
-                            type="checkbox"
+                        <Checkbox
                             className="form-checkbox h-5 w-5 text-gray-600"
                             checked={completedFeatures.updateTask}
-                            onChange={() => toggleFeature("updateTask")}
+                        // onChange={() => toggleFeature("updateTask")}
                         />
                         <span className="ml-2 text-gray-700">Mise à jour des tâches</span>
                     </label>
                 </li>
                 <li>
                     <label className="inline-flex items-center mt-3">
-                        <input
-                            type="checkbox"
+                        <Checkbox
                             className="form-checkbox h-5 w-5 text-gray-600"
                             checked={completedFeatures.deleteTask}
-                            onChange={() => toggleFeature("deleteTask")}
+                        // onChange={() => toggleFeature("deleteTask")}
                         />
                         <span className="ml-2 text-gray-700">Suppression des tâches</span>
                     </label>
                 </li>
                 <li>
                     <label className="inline-flex items-center mt-3">
-                        <input
-                            type="checkbox"
+                        <Checkbox
                             className="form-checkbox h-5 w-5 text-gray-600"
                             checked={completedFeatures.markTask}
-                            onChange={() => toggleFeature("markTask")}
+                        // onChange={() => toggleFeature("markTask")}
                         />
                         <span className="ml-2 text-gray-700">Marquage des tâches comme complètes ou incomplètes (optionnel)</span>
                     </label>
@@ -151,9 +146,9 @@ const Home = () => {
             </ul>
             <div className="by">
                 <blockquote className="mt-6 text-right text-blue-700 border-l-2 pl-6 italic">
-                    <a href={'https://x.com/Amr4nii'} target="new">
+                    {/* <a href={'https://x.com/Amr4nii'} target="new">
                         {'By @Amranii'}
-                    </a>
+                    </a> */}
                 </blockquote>
             </div>
         </div>

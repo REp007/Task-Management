@@ -58,7 +58,8 @@ const ContextComp = ({ children }: { children: React.ReactNode }) => {
                 setTasks(data);
 
             } catch (error) {
-                console.error('There was an error fetching tasks:', error);
+                // console.error('There was an error fetching tasks:', error);
+                // console.log('There was an error fetching tasks:', error);
             }
         };
 
