@@ -1,7 +1,3 @@
-Here is the updated README file for your MERN application with all `bun` commands removed and focusing on Node.js:
-
----
-
 # MERN Application
 
 This project is a full-stack MERN (MongoDB, Express, React, Node.js) application. The server side is a RESTful API that serves the client side of the project.
