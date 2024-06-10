@@ -1,6 +1,3 @@
-Here is the updated README file for your MERN application with all `bun` commands removed and focusing on Node.js:
-
----
 
 # MERN Application
 
